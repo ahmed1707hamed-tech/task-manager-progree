@@ -1,18 +1,15 @@
 import os
 
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-
 
 APP_ENV = os.getenv("APP_ENV", "development")
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://taskuser:taskpassword@postgres:5432/taskmanager",
+    "postgresql://taskuser:taskpassword@localhost:5433/taskmanager",
 )
 
 engine = create_engine(DATABASE_URL)
